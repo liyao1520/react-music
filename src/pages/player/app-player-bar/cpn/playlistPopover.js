@@ -20,7 +20,7 @@ export default memo(function PlaylsitPopover(props) {
   return (
     <PlaylsitPopoverWrapper>
       <div className="header">
-        <div className="title">播放列表({playlist.length})</div>
+        <div className="title">播放列表({playlist && playlist.length})</div>
       </div>
       <ul>
         {playlist.map((item) => {

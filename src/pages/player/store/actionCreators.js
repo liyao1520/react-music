@@ -35,7 +35,6 @@ export const autoSwitchCurrentSongAction = () => {
   const playlist = store.getState().getIn(["player", "playlist"]);
   const crruentIndex = playlist.findIndex((item) => item.id === currentId);
   const playMode = store.getState().getIn(["player", "playMode"]);
-  console.log(playMode);
   return (dispatch) => {
     if (playMode === actionTypes.PLAY_MODE.LOOP) {
       dispatch(getCurrentSongAction(currentId));
@@ -55,6 +54,34 @@ export const autoSwitchCurrentSongAction = () => {
       dispatch(getCurrentSongAction(randomSong.id));
     } else {
       dispatch(getCurrentSongAction(currentId));
+    }
+  };
+};
+export const switchCurrentSongPrevAction = () => {
+  const currentId = store.getState().getIn(["player", "currentSong"]).id;
+  const playlist = store.getState().getIn(["player", "playlist"]);
+  const crruentIndex = playlist.findIndex((item) => item.id === currentId);
+  return (dispatch) => {
+    if (crruentIndex === 0) {
+      dispatch(getCurrentSongAction(currentId));
+    } else {
+      const prevId = playlist[crruentIndex - 1].id;
+      dispatch(getCurrentSongAction(prevId));
+    }
+  };
+};
+export const switchCurrentSongNextAction = () => {
+  const currentId = store.getState().getIn(["player", "currentSong"]).id;
+  const playlist = store.getState().getIn(["player", "playlist"]);
+  const crruentIndex = playlist.findIndex((item) => item.id === currentId);
+  console.log(crruentIndex);
+  return (dispatch) => {
+    if (crruentIndex + 1 === playlist.length) {
+      const firstId = playlist[0].id;
+      dispatch(getCurrentSongAction(firstId));
+    } else {
+      const nextId = playlist[crruentIndex + 1].id;
+      dispatch(getCurrentSongAction(nextId));
     }
   };
 };

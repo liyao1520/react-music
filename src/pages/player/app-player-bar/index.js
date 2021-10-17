@@ -11,6 +11,8 @@ import {
   autoSwitchCurrentSongAction,
   changeCurrentLyricIndexAction,
   changePlayModeAction,
+  switchCurrentSongNextAction,
+  switchCurrentSongPrevAction,
 } from "../store/actionCreators";
 import PlaylistPopover from "./cpn/playlistPopover";
 
@@ -77,13 +79,9 @@ export default memo(function AppPlayerBar() {
       setHide(true);
     }, 5000);
   }, []);
-  const siliderChangehandle = useCallback(
-    (val) => {
-      console.log(currentTime);
-      audioRef.current.currentTime = val / 1000;
-    },
-    [currentTime]
-  );
+  const siliderChangehandle = useCallback((val) => {
+    audioRef.current.currentTime = val / 1000;
+  }, []);
   const tipFormatter = useCallback((val) => {
     return formatDate(val, "mm:ss");
   }, []);
@@ -136,6 +134,19 @@ export default memo(function AppPlayerBar() {
 
   //播放模式
   const [playMode, SetPlayMode] = useLocalStorage("play_mode");
+
+  //切歌
+  const switchSong = useCallback(
+    (type) => {
+      if (type === "prev") {
+        dispatch(switchCurrentSongPrevAction());
+      } else if (type === "next") {
+        dispatch(switchCurrentSongNextAction());
+      } else {
+      }
+    },
+    [dispatch]
+  );
   useEffect(() => {
     dispatch(changePlayModeAction(playMode));
   }, [playMode, dispatch]);
@@ -181,17 +192,26 @@ export default memo(function AppPlayerBar() {
       >
         <div className="wrap-v2">
           <div className="btns">
-            <div href="" className="sprite_player prev">
+            <div
+              className="sprite_player prev"
+              onClick={(e) => {
+                switchSong("prev");
+              }}
+            >
               上一个
             </div>
             <div
-              href=""
               className={["sprite_player", isPlaying ? "paused" : "play"].join(" ")}
               onClick={isPlaying ? pauseMusic : playMusic}
             >
               播放
             </div>
-            <div href="" className="sprite_player next">
+            <div
+              className="sprite_player next"
+              onClick={(e) => {
+                switchSong("next");
+              }}
+            >
               下一个
             </div>
           </div>
