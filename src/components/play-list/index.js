@@ -88,16 +88,22 @@ export default memo(function PlayList(props) {
     },
   ];
   return (
-    <div>
-      <Table
-        rowKey="id"
-        dataSource={dataSource}
-        rowClassName={styles["row-class"]}
-        size="small"
-        stripe
-        columns={columns}
-        pagination={false}
-      ></Table>
-    </div>
+    <>
+      <div className={styles.title}>
+        歌曲列表
+        <span className={styles.count}>{props.songs && props.songs.length} 首歌</span>
+      </div>
+      <div className={styles.border}>
+        <Table
+          rowKey="id"
+          dataSource={dataSource}
+          rowClassName={styles["row-class"]}
+          size="small"
+          stripe
+          columns={columns}
+          pagination={false}
+        ></Table>
+      </div>
+    </>
   );
 });

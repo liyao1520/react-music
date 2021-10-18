@@ -32,12 +32,10 @@ export default memo(function TopRanking(props) {
             <h3>{info.name}</h3>
           </a>
           <div className="btn">
-            <a href="todo" className="sprite_02 play" onClick={playPlayList}>
+            <a className="sprite_02 play" onClick={playPlayList}>
               播放
             </a>
-            <a href="todo" className="sprite_02 collect">
-              收藏
-            </a>
+            <a className="sprite_02 collect">收藏</a>
           </div>
         </div>
       </div>
@@ -58,19 +56,15 @@ export default memo(function TopRanking(props) {
                 >
                   播放
                 </a>
-                <a href="todo" className="sprite_icon2 add">
-                  添加到播放列表
-                </a>
-                <a href="todo" className="sprite_02 collect">
-                  收藏
-                </a>
+                <a className="sprite_icon2 add">添加到播放列表</a>
+                <a className="sprite_02 collect">收藏</a>
               </div>
             </div>
           );
         })}
       </div>
       <div className="footer">
-        <a href="todo">查看全部 &gt;</a>
+        <a>查看全部 &gt;</a>
       </div>
     </TopRankingWrapper>
   );

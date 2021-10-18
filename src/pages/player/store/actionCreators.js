@@ -96,6 +96,10 @@ export const getCurrentSongAction = (ids) => {
       dispatch(unshitPlaylistAction(res.songs[0]));
     });
     getLyric(ids).then((res) => {
+      if (!res.lrc) {
+        dispatch(changeCurrentLyricAction([]));
+        return;
+      }
       const lyricList = parseLyric(res.lrc.lyric);
       dispatch(changeCurrentLyricAction(lyricList));
     });

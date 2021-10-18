@@ -1,12 +1,47 @@
 import styled from "styled-components";
-export const PlayListWrapper = styled.div`
+export const TopListWrapper = styled.div`
   width: 980px;
   margin: 0 auto;
-  display: flex;
-  border: 1px solid #ccc;
+  border: 1px solid #d3d3d3;
+  border-top: 0;
+  border-bottom: 0;
   background-color: #fff;
+  display: flex;
   .left {
-    width: 709px;
+    width: 240px;
+    border-right: 1px solid #ccc;
+    padding-top: 30px;
+    .title {
+      padding: 0 10px 12px 15px;
+      font-size: 14px;
+      color: #000;
+      font-weight: 700;
+      font-family: simsun;
+    }
+    .toplist {
+      .item {
+        display: flex;
+        padding: 10px 0 10px 20px;
+        cursor: pointer;
+        align-items: center;
+        &:hover {
+          background: #e6e6e6;
+        }
+        .item-left {
+          margin-right: 10px;
+        }
+        .item-right {
+          color: #999;
+          .name {
+            color: #333;
+          }
+        }
+      }
+    }
+  }
+
+  .right {
+    width: 740px;
     .play-list-wrap {
       margin-top: 40px;
     }
@@ -106,8 +141,5 @@ export const PlayListWrapper = styled.div`
       .tags {
       }
     }
-  }
-  .right {
-    width: 270px;
   }
 `;

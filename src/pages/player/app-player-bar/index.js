@@ -228,7 +228,7 @@ export default memo(function AppPlayerBar() {
 
               {currentSong.ar.map((item, index) => {
                 return (
-                  <a href="todo" className="singer" key={index}>
+                  <a className="singer" key={index}>
                     {(index === 0 ? " " : " / ") + item.name}
                   </a>
                 );
@@ -259,14 +259,11 @@ export default memo(function AppPlayerBar() {
               }
               trigger="click"
             >
-              <a href="todo" className="sprite_player icn-vol">
-                声音
-              </a>
+              <a className="sprite_player icn-vol">声音</a>
             </Popover>
 
             <Popover content={playmodeInfo[playMode]} trigger="hover">
               <a
-                href="todo"
                 onClick={(e) => {
                   switchPlayMode(e);
                 }}

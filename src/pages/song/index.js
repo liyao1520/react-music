@@ -30,7 +30,7 @@ export default memo(function Song(props) {
       }
     });
     getLyric(id).then((res) => {
-      if (res.nolyric) {
+      if (res.nolyric || !res.lrc) {
         setlyricList([]);
         return;
       }

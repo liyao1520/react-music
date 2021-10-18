@@ -13,7 +13,7 @@ const Header = memo(function Header(props) {
         {keywords.map((item, index) => {
           return (
             <div className="item" key={item}>
-              <a href="todo">{item}</a>
+              <a>{item}</a>
               {index !== keywords.length - 1 && <span className="divider">|</span>}
             </div>
           );
@@ -21,7 +21,7 @@ const Header = memo(function Header(props) {
       </div>
       {!hideMore && (
         <div className="header-right">
-          <a href="todo">更多</a>
+          <a>更多</a>
           <i className="sprite_02"></i>
         </div>
       )}

@@ -69,7 +69,7 @@ export default memo(function PlayListPage(props) {
               </div>
             </div>
           </div>
-          <div>
+          <div className="play-list-wrap">
             <PlayList songs={songs} />
           </div>
         </div>
