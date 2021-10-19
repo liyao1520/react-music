@@ -76,9 +76,11 @@ export default memo(function AppPlayerBar() {
       clearTimeout(timer.current);
     }
     timer.current = setTimeout(() => {
-      setHide(true);
+      if (!isLock) {
+        setHide(true);
+      }
     }, 5000);
-  }, []);
+  }, [isLock]);
   const siliderChangehandle = useCallback((val) => {
     audioRef.current.currentTime = val / 1000;
   }, []);
