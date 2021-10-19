@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from "react";
 import RecommendNavBar from "@/components/recommend-navbar";
-import { getPlayListDetail, getPlayListSongs } from "@/services/playlist";
+import { getPlayListDetail, getPlayListSongs, getRelatedPlayList } from "@/services/playlist";
 import { PlayListWrapper } from "./style";
 import { Tag } from "antd";
 
@@ -8,10 +8,13 @@ import { getSizeImage } from "@/utils/format-data";
 import PlayList from "@/components/play-list";
 import { useDispatch } from "react-redux";
 import { changePlaylistAction, getCurrentSongAction } from "../player/store/actionCreators";
+import Download from "@/components/download";
+import SongsCoverMini from "@/components/songs-cover-mini";
 export default memo(function PlayListPage(props) {
   const search = new URLSearchParams(props.location.search);
   const id = search.get("id");
   const [playList, setPlaylist] = useState({ creator: {}, tags: [] });
+  const [relatedPlayList, setRelatedPlayList] = useState([]);
   const [songs, setSongs] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -21,6 +24,9 @@ export default memo(function PlayListPage(props) {
       getPlayListSongs(ids).then((res) => {
         setSongs(res.songs);
       });
+    });
+    getRelatedPlayList(id).then((res) => {
+      setRelatedPlayList(res.playlists);
     });
   }, [id]);
   function playlistPlay(e) {
@@ -64,7 +70,7 @@ export default memo(function PlayListPage(props) {
                   return <Tag key={item}>{item}</Tag>;
                 })}
               </div>
-              <div>
+              <div className="description">
                 <span>介绍: {playList.description}</span>
               </div>
             </div>
@@ -73,7 +79,13 @@ export default memo(function PlayListPage(props) {
             <PlayList songs={songs} />
           </div>
         </div>
-        <div className="right"></div>
+        <div className="right">
+          <div className="related-playList">推荐歌单</div>
+          {relatedPlayList.map((item) => {
+            return <SongsCoverMini info={item} key={item.id} />;
+          })}
+          <Download />
+        </div>
       </PlayListWrapper>
     </div>
   );

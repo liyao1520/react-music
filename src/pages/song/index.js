@@ -7,12 +7,16 @@ import { getLyric } from "@/services/song";
 import { getSizeImage } from "@/utils/format-data";
 import { parseLyric } from "@/utils/parse-lyric";
 import { getCurrentSongAction } from "../player/store/actionCreators";
+import Download from "@/components/download";
+import { getSimiPlayList } from "@/services/playlist";
+import SongsCoverMini from "@/components/songs-cover-mini";
 
 export default memo(function Song(props) {
   const search = new URLSearchParams(props.location.search);
   const id = search.get("id");
   const [musicInfo, setMusicInfo] = useState({});
   const [lyricList, setlyricList] = useState([]);
+  const [playlists, setPlaylists] = useState([]);
   const [isopen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -36,6 +40,9 @@ export default memo(function Song(props) {
       }
       const lyricList = parseLyric(res.lrc.lyric);
       setlyricList(lyricList);
+    });
+    getSimiPlayList(id).then((res) => {
+      setPlaylists(res.playlists);
     });
   }, [id, props.history]);
   return (
@@ -94,7 +101,13 @@ export default memo(function Song(props) {
               </div>
             </div>
           </div>
-          <div className="right"></div>
+          <div className="right">
+            <div className="related-playList">包含这首歌的歌单</div>
+            {playlists.map((item) => {
+              return <SongsCoverMini info={item} key={item.id} />;
+            })}
+            <Download />
+          </div>
         </SongWrapper>
       </div>
     )

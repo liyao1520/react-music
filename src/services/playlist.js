@@ -25,4 +25,13 @@ export const getPlayListCatlist = () =>
   request({
     url: "/playlist/catlist",
   });
-
+export const getRelatedPlayList = (id) =>
+  request({
+    url: "/related/playlist",
+    params: { id },
+  });
+export const getSimiPlayList = (id) =>
+  request({
+    url: "/simi/playlist",
+    params: { id },
+  });

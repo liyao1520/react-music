@@ -109,5 +109,26 @@ export const PlayListWrapper = styled.div`
   }
   .right {
     width: 270px;
+    border-left: 1px solid #ccc;
+    padding: 20px 40px 40px 30px;
+    .related-playList {
+      height: 23px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ccc;
+      color: #333;
+      font-weight: 700;
+    }
+  }
+  .description {
+    max-height: 100px;
+    overflow-y: auto;
+    padding-right: 4px;
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+    }
   }
 `;
