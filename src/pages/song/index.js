@@ -10,6 +10,7 @@ import { getCurrentSongAction } from "../player/store/actionCreators";
 import Download from "@/components/download";
 import { getSimiPlayList } from "@/services/playlist";
 import SongsCoverMini from "@/components/songs-cover-mini";
+import { NavLink } from "react-router-dom";
 
 export default memo(function Song(props) {
   const search = new URLSearchParams(props.location.search);
@@ -64,14 +65,14 @@ export default memo(function Song(props) {
                 </div>
                 <div className="singer">
                   <span>歌手:</span>
-                  <a href="todo">{musicInfo.ar[0].name}</a>
+                  <NavLink to={"/artist?id=" + musicInfo.ar[0].id}>{musicInfo.ar[0].name}</NavLink>
                 </div>
                 <div className="album">
                   <span>所属专辑:</span>
-                  <a href="todo">{musicInfo.al.name}</a>
+                  <a>{musicInfo.al.name}</a>
                 </div>
                 <div className="btns">
-                  <a href="" className="sprite_button play" onClick={playMusic}>
+                  <a className="sprite_button play" onClick={playMusic}>
                     <i className="sprite_button"></i>
                     <span>播放</span>
                   </a>

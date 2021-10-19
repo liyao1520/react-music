@@ -21,3 +21,11 @@ export const getArtistDetail = (id) =>
       id,
     },
   });
+//获取相似歌手
+export const getSimiArtist = (id) =>
+  request({
+    url: "/simi/artist",
+    params: {
+      id,
+    },
+  });

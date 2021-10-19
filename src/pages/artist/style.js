@@ -81,4 +81,15 @@ export const ArtistWrapper = styled.div`
       }
     }
   }
+  .right {
+    padding: 20px 40px 40px 30px;
+    border-left: 1px solid #ccc;
+    .related-singer {
+      height: 23px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ccc;
+      color: #333;
+      font-weight: 700;
+    }
+  }
 `;

@@ -51,7 +51,7 @@ export default memo(function PlayListPage(props) {
                 <span>{playList.name}</span>
               </div>
               <div className="info">
-                <a href="">
+                <a>
                   <img src={getSizeImage(playList.creator.avatarUrl, 40)} alt="" />
                   <span>{playList.creator.nickname}</span>
                 </a>

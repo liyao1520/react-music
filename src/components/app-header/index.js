@@ -1,11 +1,24 @@
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { HeaderWrapper } from "./style";
 import { navLink } from "@/common/local-data";
-
-import { Input } from "antd";
+import { useHistory } from "react-router-dom";
+import { Input, Popover, Tag } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
+import { getSearchHot } from "@/services/search";
+
 export default memo(function MyFooter() {
+  const history = useHistory();
+  const [searchHots, setSearchHots] = useState([]);
+  function onPressEnter(e) {
+    const keywords = e.target.value;
+    history.push("/search?keywords=" + keywords);
+  }
+  useEffect(() => {
+    getSearchHot().then((res) => {
+      setSearchHots(res.result.hots);
+    });
+  }, []);
   return (
     <HeaderWrapper>
       <div className="content wrap-v1">
@@ -31,7 +44,30 @@ export default memo(function MyFooter() {
           })}
         </div>
         <div className="header-right">
-          <Input placeholder="音乐/视频/电台/用户" prefix={<SearchOutlined />} className="search" />
+          <Popover
+            content={
+              <div style={{ display: "flex", flexWrap: "wrap", width: "300px" }}>
+                {searchHots.map((item) => {
+                  return (
+                    <Tag
+                      style={{ margin: "5px", cursor: "pointer" }}
+                      onClick={(e) => history.push("/search?keywords=" + item.first)}
+                      key={item.first}
+                    >
+                      {item.first}
+                    </Tag>
+                  );
+                })}
+              </div>
+            }
+          >
+            <Input
+              placeholder="音乐/视频/电台/用户"
+              prefix={<SearchOutlined />}
+              onPressEnter={onPressEnter}
+              className="search"
+            />
+          </Popover>
           <button className="button border">创作者中心</button>
           <button className="button">登录</button>
         </div>

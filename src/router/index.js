@@ -11,6 +11,7 @@ import playList from "@/pages/play-list";
 import song from "@/pages/song";
 import artistpage from "@/pages/artist";
 import { Redirect } from "react-router";
+import search from "@/pages/search";
 
 const routes = [
   {
@@ -71,6 +72,10 @@ const routes = [
   {
     path: "/artist",
     component: artistpage,
+  },
+  {
+    path: "/search",
+    component: search,
   },
 ];
 

@@ -5,6 +5,7 @@ export const ArticleCoverWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .img-wrap {
     width: 130px;
     height: 130px;

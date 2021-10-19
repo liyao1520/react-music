@@ -4,8 +4,12 @@ import { Tabs } from "antd";
 import React, { memo, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router";
+import Download from "@/components/download";
 import { changePlaylistAction, getCurrentSongAction } from "../player/store/actionCreators";
 import { ArtistWrapper } from "./style";
+import SongsCoverMini from "@/components/songs-cover-mini";
+import { getPlayList } from "@/services/playlist";
+
 const { TabPane } = Tabs;
 export default memo(function Actist(props) {
   const location = useLocation();
@@ -13,11 +17,17 @@ export default memo(function Actist(props) {
   const id = search.get("id");
   const [artist, setArtist] = useState({});
   const [songs, setSongs] = useState([]);
+  const [playlists, setPlaylists] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
     getArtistDetail(id).then((res) => {
       setArtist(res.artist);
       setSongs(res.hotSongs);
+    });
+    getPlayList({
+      limit: 5,
+    }).then((res) => {
+      setPlaylists(res.playlists);
     });
   }, [id]);
   function playlistPlay(e) {
@@ -35,7 +45,7 @@ export default memo(function Actist(props) {
           <img src={artist.picUrl + "?param=640y300"} alt="" />
         </div>
         <div className="btns">
-          <a href="" className="sprite_button play" onClick={playlistPlay}>
+          <a className="sprite_button play" onClick={playlistPlay}>
             <i className="sprite_button"></i>
             <span>播放</span>
           </a>
@@ -55,7 +65,13 @@ export default memo(function Actist(props) {
           </TabPane>
         </Tabs>
       </div>
-      <div className="right">123</div>
+      <div className="right">
+        <div className="related-singer">热门歌单</div>
+        {playlists.map((item) => {
+          return <SongsCoverMini info={item} key={item.id} />;
+        })}
+        <Download />
+      </div>
     </ArtistWrapper>
   );
 });

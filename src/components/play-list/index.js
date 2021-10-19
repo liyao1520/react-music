@@ -51,17 +51,24 @@ export default memo(function PlayList(props) {
     },
     {
       title: "时长",
-      dataIndex: "dt",
       key: "dt",
-      render(dt) {
-        return formatDate(dt, "mm:ss");
+      render(row) {
+        return row.dt ? formatDate(row.dt, "mm:ss") : formatDate(row.duration, "mm:ss");
       },
     },
     {
       title: "歌手",
       key: "ar",
       render(row, index) {
-        return <span key={index}>{row.ar[0].name}</span>;
+        return row.ar ? (
+          <NavLink to={"/artist?id=" + row.ar[0].id} key={index}>
+            {row.ar[0].name}
+          </NavLink>
+        ) : (
+          <NavLink to={"/artist?id=" + row.artists[0].id} key={index}>
+            {row.artists[0].name}
+          </NavLink>
+        );
       },
     },
     {
