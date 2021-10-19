@@ -9,6 +9,7 @@ import friend from "@/pages/friend";
 import my from "@/pages/my";
 import playList from "@/pages/play-list";
 import song from "@/pages/song";
+import artistpage from "@/pages/artist";
 import { Redirect } from "react-router";
 
 const routes = [
@@ -66,6 +67,10 @@ const routes = [
   {
     path: "/playlist",
     component: playList,
+  },
+  {
+    path: "/artist",
+    component: artistpage,
   },
 ];
 

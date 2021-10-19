@@ -1,6 +1,7 @@
 import { formatDate } from "@/utils/format-data";
 import React, { memo } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { getCurrentSongAction } from "../../store/actionCreators";
 import { PlaylsitPopoverWrapper } from "./style";
 
@@ -38,7 +39,11 @@ export default memo(function PlaylsitPopover(props) {
               <span className="singer">
                 {item.ar &&
                   item.ar.map((item, index) => {
-                    return <span key={item.name}>{index === 0 ? item.name : "/" + item.name}</span>;
+                    return (
+                      <NavLink to={"artist?id=" + item.id} key={item.name}>
+                        {index === 0 ? item.name : "/" + item.name}
+                      </NavLink>
+                    );
                   })}
               </span>
               <span className="time">{formatDate(item.dt, "mm:ss")} </span>

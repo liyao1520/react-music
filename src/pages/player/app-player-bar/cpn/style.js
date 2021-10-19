@@ -76,6 +76,9 @@ export const PlaylsitPopoverWrapper = styled.div`
       overflow: hidden;
       text-overflow: ellipsis;
       cursor: pointer;
+      a {
+        color: #ccc;
+      }
     }
     .time {
       width: 50px;
