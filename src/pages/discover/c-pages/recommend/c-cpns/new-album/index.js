@@ -21,7 +21,7 @@ export default memo(function PersonalizedRecommned(props) {
   const carouselRef = useRef();
   return (
     <NewAlbumWrapper>
-      <RecommendHeader title="新碟上架" />
+      <RecommendHeader title="新碟上架" hideMore />
       <div className="album-carousel-wrap">
         <div className="icon-prev sprite_02" onClick={(e) => carouselRef.current.prev()}></div>
         <div className="icon-next sprite_02" onClick={(e) => carouselRef.current.next()}></div>

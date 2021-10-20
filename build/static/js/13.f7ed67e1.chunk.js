@@ -1,0 +1,2 @@
+(this["webpackJsonpmusic-react"]=this["webpackJsonpmusic-react"]||[]).push([[13],{314:function(t,e,c){"use strict";c.r(e);var s=c(321),i=c(60),r=c(0),a=c(20),n=c(6);e.default=Object(r.memo)((function(){var t=Object(a.g)();return Object(n.jsx)("div",{children:Object(n.jsx)(s.a,{status:"404",title:"404",subTitle:"Sorry, the page you visited does not exist.",extra:Object(n.jsx)(i.a,{type:"primary",onClick:function(e){t.push("/")},children:"Back Home"})})})}))}}]);
+//# sourceMappingURL=13.f7ed67e1.chunk.js.map

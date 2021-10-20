@@ -19,9 +19,31 @@ export default memo(function HotRecomment() {
   useEffect(() => {
     dispatch(getHotRecommendsAction());
   }, [dispatch]);
+  const keywords = [
+    {
+      name: "华语",
+      link: "/discover/playlist?cat=华语",
+    },
+    {
+      name: "流行",
+      link: "/discover/playlist?cat=流行",
+    },
+    {
+      name: "摇滚",
+      link: "/discover/playlist?cat=摇滚",
+    },
+    {
+      name: "民谣",
+      link: "/discover/playlist?cat=民谣",
+    },
+    {
+      name: "电子",
+      link: "/discover/playlist?cat=电子",
+    },
+  ];
   return (
     <HotRecommentWrapper>
-      <RecommendHeader title="热门推荐" keywords={["华语", "流行", "摇滚", "民谣", "电子"]}></RecommendHeader>
+      <RecommendHeader title="热门推荐" keywords={keywords} moreLink="/discover/playlist"></RecommendHeader>
       <div className="hot-list">
         {hotRecommends.map((item, index) => {
           return (

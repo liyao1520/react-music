@@ -22,7 +22,9 @@ export default memo(function PlayListPage(props) {
       setPlaylist(res.playlist);
       const ids = res.playlist.trackIds.map((item) => item.id);
       getPlayListSongs(ids).then((res) => {
-        setSongs(res.songs);
+        if (res.songs) {
+          setSongs(res.songs);
+        }
       });
     });
     getRelatedPlayList(id).then((res) => {

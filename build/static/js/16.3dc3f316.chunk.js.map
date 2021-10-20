@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/my/index.js"],"names":["memo"],"mappings":"mHAAA,yBAEeA,0BAAK,WAClB,OAAO","file":"static/js/16.3dc3f316.chunk.js","sourcesContent":["import React, { memo } from \"react\";\n\nexport default memo(function My() {\n  return <div>My</div>;\n});\n"],"sourceRoot":""}

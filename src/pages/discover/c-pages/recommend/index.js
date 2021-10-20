@@ -6,6 +6,7 @@ import TopBanner from "./c-cpns/top-banner";
 import HotRecomment from "./c-cpns/hot-recommend";
 import NewAlbum from "./c-cpns/new-album";
 import TopList from "./c-cpns/top-list";
+import Download from "@/components/download";
 export default memo(function Recommend() {
   return (
     <div>
@@ -16,7 +17,9 @@ export default memo(function Recommend() {
           <NewAlbum />
           <TopList />
         </div>
-        <div className="right"></div>
+        <div className="right">
+          <Download />
+        </div>
       </ContentWrapper>
     </div>
   );

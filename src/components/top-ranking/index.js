@@ -28,9 +28,10 @@ export default memo(function TopRanking(props) {
           <img src={getSizeImage(info.coverImgUrl, 100)} alt="" />
         </div>
         <div className="name">
-          <a href="todo">
+          <NavLink to={"/discover/toplist?id=" + info.id}>
             <h3>{info.name}</h3>
-          </a>
+          </NavLink>
+
           <div className="btn">
             <a className="sprite_02 play" onClick={playPlayList}>
               播放
@@ -64,7 +65,7 @@ export default memo(function TopRanking(props) {
         })}
       </div>
       <div className="footer">
-        <a>查看全部 &gt;</a>
+        <NavLink to={"/discover/toplist?id=" + info.id}>查看全部 &gt;</NavLink>
       </div>
     </TopRankingWrapper>
   );

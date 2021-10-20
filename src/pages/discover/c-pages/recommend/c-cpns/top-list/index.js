@@ -22,7 +22,7 @@ export default memo(function TopList() {
   }, [dispatch]);
   return (
     <TopListWrapper>
-      <RecommendHeader title="榜单" />
+      <RecommendHeader title="榜单" moreLink="/discover/toplist" />
       <div className="top-list-wrap recommend_top_bg">
         <TopRanking info={upRanking} />
         <TopRanking info={newRanking} />

@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, Suspense } from "react";
 
 import { renderRoutes } from "react-router-config";
 import { HashRouter } from "react-router-dom";
@@ -17,7 +17,7 @@ export default memo(function App() {
       <HashRouter>
         <div style={{ height: "100vh", overflowY: "auto" }}>
           <Header />
-          {renderRoutes(routes)}
+          <Suspense fallback={<div>loading</div>}> {renderRoutes(routes)}</Suspense>
           <Footer />
           <AppPlayerBar />
         </div>

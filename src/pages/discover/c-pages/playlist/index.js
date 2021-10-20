@@ -1,5 +1,5 @@
 import { getPlayList, getPlayListCatlist } from "@/services/playlist";
-import { Button, Col, Pagination, Popover, Row } from "antd";
+import { Button, Col, Pagination, Popover, Row, Skeleton } from "antd";
 import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { PlayListWrapper } from "./style";
 import { DownOutlined } from "@ant-design/icons";
@@ -109,13 +109,22 @@ export default memo(function Playlist(props) {
         </Popover>
       </div>
       <div className="playlists">
-        {playlists.map((item) => {
-          return (
-            <div className="item" key={item.id}>
-              <SongsCover info={item} />
-            </div>
-          );
-        })}
+        {playlists.length
+          ? playlists.map((item) => {
+              return (
+                <div className="item" key={item.id}>
+                  <SongsCover info={item} />
+                </div>
+              );
+            })
+          : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map((item) => {
+              return (
+                <Skeleton.Image
+                  style={{ width: "140px", height: "140px", marginRight: "20px", marginTop: "20px" }}
+                  key={item}
+                />
+              );
+            })}
       </div>
       <Pagination
         showQuickJumper
