@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import store from "@/store";
 import routes from "./router";
 
+import { LoadingOutlined } from "@ant-design/icons";
 import Header from "@/components/app-header";
 import Footer from "@/components/app-footer";
 import AppPlayerBar from "./pages/player/app-player-bar";
@@ -17,7 +18,7 @@ export default memo(function App() {
       <HashRouter>
         <div style={{ height: "100vh", overflowY: "auto" }}>
           <Header />
-          <Suspense fallback={<div>loading</div>}> {renderRoutes(routes)}</Suspense>
+          <Suspense fallback={<LoadingOutlined />}> {renderRoutes(routes)}</Suspense>
           <Footer />
           <AppPlayerBar />
         </div>
