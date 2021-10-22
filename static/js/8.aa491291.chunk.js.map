@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/friend/index.js"],"names":["memo"],"mappings":"kHAAA,yBAEeA,0BAAK,WAClB,OAAO","file":"static/js/8.aa491291.chunk.js","sourcesContent":["import React, { memo } from \"react\";\n\nexport default memo(function Friend() {\n  return <div>Friend</div>;\n});\n"],"sourceRoot":""}
